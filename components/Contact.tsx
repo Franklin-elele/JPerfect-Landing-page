@@ -11,7 +11,7 @@ export default function ContactPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     // Create WhatsApp message with all form data
@@ -30,7 +30,7 @@ export default function ContactPage() {
       setFormData({ name: '', phone: '', message: '' });
     }, 3000);
   };
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -167,7 +167,7 @@ export default function ContactPage() {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="4"
+                  rows={4}
                   className="w-full px-4 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-pink-500 focus:outline-none resize-none"
                   placeholder="Tell us how we can help you..."
                 />
